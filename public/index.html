@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LifeDrop — Blood Donor Finder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="brand"><span class="drop"></span> LifeDrop</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#" data-page="home">Home</a></li>
+      <li><a href="#" data-page="eligibility">Eligibility</a></li>
+      <li><a href="#" data-page="compatibility">Compatibility</a></li>
+      <li><a href="#" data-page="facts">Blood Facts</a></li>
+      <li><a href="#" data-page="register">Donor Registration</a></li>
+      <li><a href="#" data-page="search">Search a Donor</a></li>
+      <li><a href="#" data-page="request">Request Blood</a></li>
+      <li><a href="#" data-page="mystatus">My Status</a></li>
+      <li id="navAdminItem" style="display:none;"><a href="#" data-page="admin">Admin</a></li>
+      <li id="navLogoutItem"><a href="#" id="logoutLink" class="login-btn">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===== HOME ===== -->
+<div class="page" id="page-home">
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <h1>A drop of blood makes an ocean of hope.</h1>
+        <p>One unit of blood can save up to three lives. Find a donor near you, or register to become one today.</p>
+      </div>
+      <div class="stat-badge">
+        <div class="num">9,771</div>
+        <div class="lbl">Active Donors</div>
+      </div>
+    </div>
+    <div class="pulse-wrap">
+      <svg class="pulse-line" viewBox="0 0 1200 60" preserveAspectRatio="none">
+        <path class="pulse-path" d="M0,30 L250,30 L280,10 L310,50 L340,30 L400,30 L430,5 L460,55 L490,30 L1200,30" />
+      </svg>
+    </div>
+  </div>
+
+  <main style="padding-top:40px;">
+    <h2 class="section-title">Why Donate?</h2>
+    <div class="card">
+      <ul>
+        <li>Donating blood may reduce the risk of heart disease and stimulate red blood cell generation.</li>
+        <li>It lowers the amount of stored toxins circulating in your bloodstream.</li>
+        <li>The good news — you can give blood again and again to save more lives.</li>
+        <li>Regular donors can safely give blood once every 12 weeks.</li>
+      </ul>
+    </div>
+
+    <h2 class="section-title">World Blood Donor Day</h2>
+    <div class="card">
+      <p>Every year on <strong>14th June</strong>, the world observes World Blood Donor Day — a date chosen in honour of Karl Landsteiner, who discovered the ABO blood group system. It's a day to thank voluntary donors and encourage more people to start donating.</p>
+    </div>
+
+    <h2 class="section-title">Get Started</h2>
+    <div class="card" style="display:flex; gap:16px; flex-wrap:wrap;">
+      <button class="btn" onclick="goTo('register')">Become a Donor</button>
+      <button class="btn btn-outline" onclick="goTo('search')">Search a Donor</button>
+    </div>
+  </main>
+</div>
+
+<!-- ===== ELIGIBILITY ===== -->
+<div class="page" id="page-eligibility">
+  <main>
+    <h2 class="section-title">Blood Donor Eligibility</h2>
+    <p style="margin-bottom:16px; color:var(--gray);">You should not be suffering from any of the following, or currently under medication for them:</p>
+    <div class="elig-grid">
+      <div class="elig-item">Hepatitis B, C</div>
+      <div class="elig-item">AIDS</div>
+      <div class="elig-item">Diabetes (on medication)</div>
+      <div class="elig-item">Fits / Convulsions (on medication)</div>
+      <div class="elig-item">Cancer</div>
+      <div class="elig-item">Leprosy or other infectious diseases</div>
+      <div class="elig-item">Severe allergies</div>
+      <div class="elig-item">Hemophilia / Bleeding problems</div>
+      <div class="elig-item">Kidney disease</div>
+      <div class="elig-item">Heart disease</div>
+      <div class="elig-item">Hormonal disorders</div>
+      <div class="elig-item">Jaundice (within 5 years)</div>
+      <div class="elig-item">Tuberculosis (within 2 years)</div>
+      <div class="elig-item">Chicken Pox (within 1 year)</div>
+      <div class="elig-item">Malaria (within 1 year)</div>
+      <div class="elig-item">Organ Transplant (within 1 year)</div>
+      <div class="elig-item">Blood Transfusion (within 6 months)</div>
+      <div class="elig-item">Pregnancy (within 6 months)</div>
+    </div>
+  </main>
+</div>
+
+<!-- ===== COMPATIBILITY ===== -->
+<div class="page" id="page-compatibility">
+  <main>
+    <h2 class="section-title">Red Blood Cell Compatibility</h2>
+    <div class="card">
+      <table>
+        <thead><tr><th>Recipient Type</th><th>Compatible Donor Types</th></tr></thead>
+        <tbody>
+          <tr><td class="match">O-</td><td>O-</td></tr>
+          <tr><td class="match">O+</td><td>O-, O+</td></tr>
+          <tr><td class="match">A-</td><td>O-, A-</td></tr>
+          <tr><td class="match">A+</td><td>O-, O+, A-, A+</td></tr>
+          <tr><td class="match">B-</td><td>O-, B-</td></tr>
+          <tr><td class="match">B+</td><td>O-, O+, B-, B+</td></tr>
+          <tr><td class="match">AB-</td><td>O-, A-, B-, AB-</td></tr>
+          <tr><td class="match">AB+</td><td>O-, O+, A-, A+, B-, B+, AB-, AB+</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <h3>Note</h3>
+      <p>O- is the universal red cell donor. AB+ is the universal recipient. Always confirm compatibility with a certified lab before any transfusion.</p>
+    </div>
+  </main>
+</div>
+
+<!-- ===== BLOOD FACTS ===== -->
+<div class="page" id="page-facts">
+  <main>
+    <h2 class="section-title">Blood Facts in General</h2>
+    <div class="card">
+      <ul>
+        <li>There is no substitute for human blood.</li>
+        <li>Blood makes up about 7% of your body's weight.</li>
+        <li>An average adult has about 14 to 18 pints of blood.</li>
+        <li>One standard unit or pint of blood equals about two cups.</li>
+        <li>Blood carries oxygen and nutrients to every part of the body.</li>
+        <li>Blood carries carbon dioxide and waste products to the lungs, kidneys, and liver for disposal.</li>
+        <li>Blood fights infection and helps heal wounds.</li>
+        <li>One unit of donated whole blood is separated into components — red cells, white cells, plasma, and platelets.</li>
+        <li>There are four main blood types: A, B, AB, and O.</li>
+        <li>Each blood type is either Rh positive or Rh negative.</li>
+      </ul>
+    </div>
+  </main>
+</div>
+
+<!-- ===== DONOR REGISTRATION ===== -->
+<div class="page" id="page-register">
+  <main>
+    <h2 class="section-title">Donor Registration</h2>
+    <div class="card">
+      <form id="registerForm">
+        <div class="field">
+          <label>Name</label>
+          <input type="text" id="regName" placeholder="Enter name" required>
+        </div>
+        <div class="field">
+          <label>Gender</label>
+          <div class="radio-group">
+            <label><input type="radio" name="gender" value="Male" checked> Male</label>
+            <label><input type="radio" name="gender" value="Female"> Female</label>
+          </div>
+        </div>
+        <div class="field">
+          <label>Date of Birth</label>
+          <input type="date" id="regDob" required>
+        </div>
+        <div class="field">
+          <label>Blood Group</label>
+          <select id="regGroup" required>
+            <option>A+</option><option>A-</option>
+            <option>B+</option><option>B-</option>
+            <option>AB+</option><option>AB-</option>
+            <option>O+</option><option>O-</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Weight (kg)</label>
+          <input type="number" id="regWeight" placeholder="Enter weight" required>
+        </div>
+        <div class="field">
+          <label>Street</label>
+          <input type="text" id="regStreet" placeholder="Enter street">
+        </div>
+        <div class="field">
+          <label>Area</label>
+          <input type="text" id="regArea" placeholder="Enter area name">
+        </div>
+        <div class="field">
+          <label>City</label>
+          <select id="regCity">
+            <option>Chennai</option><option>Coimbatore</option>
+            <option>Erode</option><option>Madurai</option>
+            <option>Salem</option><option>Adilabad</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Pincode</label>
+          <input type="text" id="regPincode" placeholder="Enter pincode">
+        </div>
+        <div class="field">
+          <label>Mobile</label>
+          <input type="tel" id="regMobile" placeholder="Enter mobile" required>
+        </div>
+        <div class="field full">
+          <label>E-mail</label>
+          <input type="email" id="regEmail" placeholder="Enter email" required>
+        </div>
+        <div class="field full">
+          <label>Currently Active as a Donor?</label>
+          <select id="regActive">
+            <option value="true" selected>Yes — I'm available to donate</option>
+            <option value="false">No — not available right now</option>
+          </select>
+        </div>
+        <div class="field full">
+          <button type="submit" class="btn">Register</button>
+        </div>
+      </form>
+    </div>
+  </main>
+</div>
+
+<!-- ===== SEARCH A DONOR ===== -->
+<div class="page" id="page-search">
+  <main>
+    <h2 class="section-title">Search a Donor</h2>
+    <div class="search-bar">
+      <div class="field">
+        <label>Select City</label>
+        <select id="searchCity">
+          <option>All Cities</option>
+          <option>Chennai</option><option>Coimbatore</option>
+          <option>Erode</option><option>Madurai</option><option>Salem</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Select Blood Group</label>
+        <select id="searchGroup">
+          <option>All Groups</option>
+          <option>A+</option><option>A-</option>
+          <option>B+</option><option>B-</option>
+          <option>AB+</option><option>AB-</option>
+          <option>O+</option><option>O-</option>
+        </select>
+      </div>
+      <button class="btn" onclick="runSearch()">Search</button>
+    </div>
+
+    <h3 style="color:var(--cherry-dark); margin-bottom:14px;">Blood Donors List</h3>
+    <div class="donor-list" id="donorResults"></div>
+  </main>
+</div>
+
+<!-- ===== REQUEST BLOOD ===== -->
+<div class="page" id="page-request">
+  <main>
+    <h2 class="section-title">Request Blood</h2>
+    <p style="margin-bottom:16px; color:var(--gray);">Tell us what you need — we'll save your request and let you know how many active donors currently match, so you know who to follow up with via Search a Donor.</p>
+    <div class="card">
+      <form id="requestForm">
+        <div class="field">
+          <label>Your Name</label>
+          <input type="text" id="reqName" placeholder="Enter your name" required>
+        </div>
+        <div class="field">
+          <label>Your Mobile</label>
+          <input type="tel" id="reqMobile" placeholder="Enter your mobile" required>
+        </div>
+        <div class="field">
+          <label>City Needed In</label>
+          <select id="reqCity" required>
+            <option>Chennai</option><option>Coimbatore</option>
+            <option>Erode</option><option>Madurai</option><option>Salem</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Blood Group Needed</label>
+          <select id="reqGroup" required>
+            <option>A+</option><option>A-</option>
+            <option>B+</option><option>B-</option>
+            <option>AB+</option><option>AB-</option>
+            <option>O+</option><option>O-</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Hospital (optional)</label>
+          <input type="text" id="reqHospital" placeholder="Enter hospital name">
+        </div>
+        <div class="field full">
+          <label>Message (optional)</label>
+          <input type="text" id="reqMessage" placeholder="Any extra details for the donor">
+        </div>
+        <div class="field full">
+          <button type="submit" class="btn">Send Request</button>
+        </div>
+      </form>
+    </div>
+  </main>
+</div>
+
+<!-- ===== MY STATUS (donor self-service active/inactive toggle) ===== -->
+<div class="page" id="page-mystatus">
+  <main>
+    <h2 class="section-title">My Donor Status</h2>
+    <p style="margin-bottom:16px; color:var(--gray);">Enter the mobile and email you registered with to mark yourself active or inactive. Inactive donors won't show up in Search a Donor.</p>
+    <div class="card">
+      <form class="single-col" id="statusForm">
+        <div class="field">
+          <label>Your Mobile</label>
+          <input type="tel" id="statusMobile" placeholder="Mobile you registered with" required>
+        </div>
+        <div class="field">
+          <label>Your Email</label>
+          <input type="email" id="statusEmail" placeholder="Email you registered with" required>
+        </div>
+        <div class="field">
+          <label>Set Status</label>
+          <select id="statusActive">
+            <option value="true">Active — available to donate</option>
+            <option value="false">Inactive — not available right now</option>
+          </select>
+        </div>
+        <div class="field">
+          <button type="submit" class="btn">Update Status</button>
+        </div>
+      </form>
+    </div>
+  </main>
+</div>
+
+<!-- ===== ADMIN ===== -->
+<div class="page" id="page-admin">
+  <main>
+    <h2 class="section-title">Admin Dashboard</h2>
+
+    <!-- Admin key gate: shown until a valid key is entered -->
+    <div class="card" id="adminGate" style="max-width:420px;">
+      <div class="field">
+        <label>Admin Key</label>
+        <input type="password" id="adminKeyInput" placeholder="Enter admin key">
+      </div>
+      <button class="btn" style="margin-top:14px;" onclick="unlockAdmin()">Unlock Admin</button>
+    </div>
+
+    <!-- Admin panel: hidden until unlocked -->
+    <div id="adminPanel" style="display:none;">
+
+      <div class="admin-stats">
+        <div class="stat-pill">
+          <div class="stat-pill-num" id="adminTotalCount">0</div>
+          <div class="stat-pill-lbl">📊 Total Donors</div>
+        </div>
+      </div>
+
+      <div class="search-bar">
+        <div class="field">
+          <label>🔍 Search by Name</label>
+          <input type="text" id="adminSearchName" placeholder="Type a donor name...">
+        </div>
+        <div class="field">
+          <label>City</label>
+          <select id="adminSearchCity">
+            <option>All Cities</option>
+            <option>Chennai</option><option>Coimbatore</option>
+            <option>Erode</option><option>Madurai</option><option>Salem</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Blood Group</label>
+          <select id="adminSearchGroup">
+            <option>All Groups</option>
+            <option>A+</option><option>A-</option>
+            <option>B+</option><option>B-</option>
+            <option>AB+</option><option>AB-</option>
+            <option>O+</option><option>O-</option>
+          </select>
+        </div>
+        <button class="btn" onclick="loadAdminDonors()">Search</button>
+      </div>
+
+      <div class="card">
+        <div style="overflow-x:auto;">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>City</th>
+                <th>Blood Group</th>
+                <th>Mobile</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="adminDonorTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <h3 style="color:var(--cherry-dark); margin-bottom:14px;">Recent Blood Requests</h3>
+      <div class="card">
+        <div style="overflow-x:auto;">
+          <table>
+            <thead>
+              <tr>
+                <th>Requester</th>
+                <th>Mobile</th>
+                <th>City</th>
+                <th>Blood Group</th>
+                <th>Hospital</th>
+                <th>Message</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody id="adminRequestsTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Edit Donor Modal -->
+<div class="modal-overlay" id="editModalOverlay">
+  <div class="modal-box">
+    <h3 style="color:var(--cherry-dark); margin-bottom:16px;">✏ Edit Donor</h3>
+    <form id="editDonorForm">
+      <input type="hidden" id="editDonorId">
+      <div class="field">
+        <label>Name</label>
+        <input type="text" id="editName" required>
+      </div>
+      <div class="field">
+        <label>Gender</label>
+        <div class="radio-group">
+          <label><input type="radio" name="editGender" value="Male"> Male</label>
+          <label><input type="radio" name="editGender" value="Female"> Female</label>
+        </div>
+      </div>
+      <div class="field">
+        <label>Date of Birth</label>
+        <input type="date" id="editDob" required>
+      </div>
+      <div class="field">
+        <label>Blood Group</label>
+        <select id="editGroup" required>
+          <option>A+</option><option>A-</option>
+          <option>B+</option><option>B-</option>
+          <option>AB+</option><option>AB-</option>
+          <option>O+</option><option>O-</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Weight (kg)</label>
+        <input type="number" id="editWeight" required>
+      </div>
+      <div class="field">
+        <label>Street</label>
+        <input type="text" id="editStreet">
+      </div>
+      <div class="field">
+        <label>Area</label>
+        <input type="text" id="editArea">
+      </div>
+      <div class="field">
+        <label>City</label>
+        <input type="text" id="editCity" required>
+      </div>
+      <div class="field">
+        <label>Pincode</label>
+        <input type="text" id="editPincode">
+      </div>
+      <div class="field">
+        <label>Mobile</label>
+        <input type="tel" id="editMobile" required>
+      </div>
+      <div class="field full">
+        <label>E-mail</label>
+        <input type="email" id="editEmail">
+      </div>
+      <div class="field full">
+        <label>Status</label>
+        <select id="editActive">
+          <option value="true">Active — available to donate</option>
+          <option value="false">Inactive — not available right now</option>
+        </select>
+      </div>
+      <div class="field full" style="display:flex; gap:12px;">
+        <button type="submit" class="btn">Save Changes</button>
+        <button type="button" class="btn btn-outline" onclick="closeEditModal()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<footer>
+  &copy; 2026 LifeDrop &mdash; Every drop counts. | <a href="#">Privacy Policy</a> | <a href="#">Refer a Friend</a>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

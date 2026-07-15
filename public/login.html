@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login | LifeDrop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="brand"><span class="drop"></span> LifeDrop</div>
+  </div>
+</nav>
+
+<main style="max-width:460px; padding-top:60px;">
+
+  <h2 class="section-title" style="display:block; text-align:center; border:none;">Login</h2>
+
+  <div class="login-tabs">
+    <button type="button" class="login-tab active" id="tabUserBtn" onclick="switchLoginTab('user')">User Login</button>
+    <button type="button" class="login-tab" id="tabAdminBtn" onclick="switchLoginTab('admin')">Admin Login</button>
+  </div>
+
+  <!-- ---- USER LOGIN ---- -->
+  <div class="card" id="userLoginCard">
+    <form class="single-col" id="loginForm">
+      <div class="field">
+        <label>Email or Mobile</label>
+        <input type="text" id="loginIdentifier" placeholder="Enter email or mobile" required>
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" id="loginPassword" placeholder="Enter password" required>
+      </div>
+      <div class="field">
+        <button type="submit" class="btn">Login</button>
+      </div>
+      <p style="text-align:center; font-size:0.88rem; color:var(--gray);">
+        New here? <a href="#" id="goSignupLink" class="link-accent">Create New Login</a>
+      </p>
+    </form>
+  </div>
+
+  <!-- ---- ADMIN LOGIN ---- -->
+  <div class="card" id="adminLoginCard" style="display:none;">
+    <form class="single-col" id="adminLoginForm">
+      <div class="field">
+        <label>Admin Key</label>
+        <input type="password" id="adminLoginKeyInput" placeholder="Enter admin key" required>
+      </div>
+      <div class="field">
+        <button type="submit" class="btn">Login as Admin</button>
+      </div>
+      <p style="text-align:center; font-size:0.85rem; color:var(--gray);">
+        Only for site administrators managing donor records.
+      </p>
+    </form>
+  </div>
+
+  <!-- ---- CREATE NEW LOGIN (simple signup, no donor details) ---- -->
+  <div class="card" id="signupCard" style="display:none;">
+    <form class="single-col" id="signupForm">
+      <div class="field">
+        <label>Full Name</label>
+        <input type="text" id="signupName" placeholder="Enter your name" required>
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <input type="email" id="signupEmail" placeholder="Enter your email" required>
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" id="signupPassword" placeholder="Create a password" required minlength="6">
+      </div>
+      <div class="field">
+        <label>Confirm Password</label>
+        <input type="password" id="signupConfirmPassword" placeholder="Re-enter password" required minlength="6">
+      </div>
+      <div class="field">
+        <button type="submit" class="btn">Create Account</button>
+      </div>
+      <p style="text-align:center; font-size:0.88rem; color:var(--gray);">
+        Already have an account? <a href="#" id="backToLoginLink" class="link-accent">Login</a>
+      </p>
+      <p style="text-align:center; font-size:0.82rem; color:var(--gray);">
+        Want to donate blood too? Create your account here first, then use <strong>Donor Registration</strong> from the menu to add your donor details.
+      </p>
+    </form>
+  </div>
+
+</main>
+
+<div class="toast" id="toast"></div>
+
+<footer>
+  &copy; 2026 LifeDrop &mdash; Every drop counts.
+</footer>
+
+<script src="login.js"></script>
+</body>
+</html>
