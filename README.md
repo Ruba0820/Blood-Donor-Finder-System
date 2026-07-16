@@ -172,36 +172,5 @@ edit/delete/list requests — this is a lightweight gate suitable for an
 internal tool, not full user authentication. For real production use, wire it
 up to the existing JWT login system instead.
 
-## API reference
 
-| Method | Endpoint                  | Body / Headers                                                                          | Description                                  |
-|--------|----------------------------|-------------------------------------------------------------------------------------------|-----------------------------------------------|
-| GET    | `/api/donors`              | query params: `city`, `group`, `q` (name search), `activeOnly` (`true`/omit) — all optional | List/search donors                          |
-| GET    | `/api/donors/stats/count`  | —                                                                                          | Total donor count                             |
-| GET    | `/api/donors/:id`          | —                                                                                          | Get a single donor (used to prefill Edit form)|
-| POST   | `/api/donors`              | `{ name, gender, dob, bloodGroup, weight, street, area, city, pincode, mobile, email, isActive }` | Register a new donor                 |
-| PATCH  | `/api/donors/status`       | `{ mobile, email, isActive }`                                                             | Donor self-service: update your own Active/Inactive status |
-| PUT    | `/api/donors/:id`          | same body as POST, plus header `x-admin-key`                                             | Update a donor (admin only)                   |
-| DELETE | `/api/donors/:id`          | header `x-admin-key`                                                                      | Delete a donor (admin only)                   |
-| POST   | `/api/auth/register`       | `{ identifier, password }`                                                                | Create a login account                        |
-| POST   | `/api/auth/login`          | `{ identifier, password }`                                                                | Log in, returns a JWT token                   |
-| GET    | `/api/admin/verify`        | header `x-admin-key`                                                                       | Checks the admin key is correct (used by Admin Login) |
-| POST   | `/api/request-blood`       | `{ requesterName, requesterMobile, city, bloodGroup, hospital, message }`                 | Saves a blood request to the database (no email) |
-| GET    | `/api/request-blood`       | header `x-admin-key`                                                                       | List recent blood requests (admin only)       |
 
-## Notes
-
-- Only **email** works as the login identifier right now (mobile-based login
-  isn't wired up in the UI, even though the API technically accepts any
-  `identifier` string). If you want mobile-based login too, the registration
-  JS can be changed to send the mobile number as a second account, or you can
-  extend the login form to accept either and try both against the API.
-- Donor "mobile" numbers are stored and returned in full via the API; the
-  original mock data masked them (`98xxxxxx01`) for display purposes only —
-  add your own masking in `main.js` if you'd like the same effect.
-- CORS is enabled and wide-open (`cors()`), which is fine for local dev; lock
-  it down (`cors({ origin: 'https://yourdomain.com' })`) before deploying.
-- There's no `package-lock.json` bundled this time — `npm install` will
-  generate a fresh one against the current `package.json` (which no longer
-  needs `nodemailer`, since Request Blood saves to the database instead of
-  sending email).
